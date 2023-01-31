@@ -9,20 +9,21 @@
 
        <table border="5">
 
-       <center>
+    <center>
         <div class="tambah">
             <a href="">TAMBAH</a>
         </div>
-        </center>
+    </center>
 
        <!-- <button class="tambah">TAMBAH</button> -->
     
             <tr style="background-color: gray;">
                 <th>No</th>
+                <!-- <th>ID Buku</th> -->
                 <th>Judul Buku</th>
                 <th>Penulis</th>
                 <th>Penerbit</th>
-                <th>Cover</th>
+                <!-- <th>Cover</th> -->
                 <th>Aksi</th>
             </tr>
 
@@ -32,32 +33,37 @@
             $no = 1;
 
             while ($data = mysqli_fetch_object($query)){
-                echo
-                "<tr>
-                <th>$no</th>
-                <td>{$data->judul}</td>
-                <td>{$data->penulis}</td>
-                <td>{$data->penerbit}</td>
+                ?>
+            
+                <tr>
+                <th><?= $no ?></th>
+                <td><?= $data->judul ?></td>
+                <td><?= $data->penulis ?></td>
+                <td><?= $data->penerbit ?></td>
 
-                <td>
-                <center><img src=images/{$data->gambar} width=100></center>
-                </td>
+                <!-- <td>
+                <center>X</center>
+                </td> -->
 
                 <td class='tombol'>
                 <div class='ubah'>
-                <a href=''>Ubah</a>
+                <a href='Ubah.php'>Ubah</a>
                 </div>
-
 
                 <div class='hapus'>
-                <a href=''>Hapus</a>
+                <a
+                href='Hapus.php?id= <?= $data->idbuku ?> onclick="return confirm("yakin data ingin dihapus?")"'>
+                Hapus</a>
                 </div>
                 </td>
-                </tr>";
-
+                </tr>
+            <?php
                 $no++;
-                }
+            }
             ?>
         </table>
     </body>
 </html>
+
+
+<!-- <img src=images/{$data->gambar} width=100> -->

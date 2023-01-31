@@ -1,5 +1,5 @@
 body{
-    text-align: center
+    text-align: center;
 }
 
 table{
@@ -34,17 +34,19 @@ table{
 .ubah{
     background-color: blue;
     float: left;
-    border-radius: 3px;
     padding: 5px;
     margin: 2px;
+    border-radius: 3px;
+    border: 2px solid black;
 }
 
 .hapus{
     background-color: red;
     float: left;
-    border-radius: 3px;
     padding: 5px;
     margin: 2px;
+    border-radius: 3px;
+    border: 2px solid black;
 }
 
 .tombol a{
