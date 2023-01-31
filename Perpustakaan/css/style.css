@@ -1,0 +1,55 @@
+body{
+    text-align: center
+}
+
+table{
+    margin: auto;
+    border: 5;
+    /* width: 900; */
+}
+
+.tambah{   
+    background-color: green;
+    border: 5px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+.tambah a{
+    text-decoration: none;
+    color: white;
+}
+
+/* .ubah{
+    background-color: blue;
+    color: white;
+}
+
+.hapus{
+    background-color: red;
+    color: white;
+} */
+
+.ubah{
+    background-color: blue;
+    float: left;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.hapus{
+    background-color: red;
+    float: left;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 2px;
+}
+
+.tombol a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+}
