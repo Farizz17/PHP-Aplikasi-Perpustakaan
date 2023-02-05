@@ -52,7 +52,7 @@
 
                 <div class='hapus'>
                 <a
-                href='Hapus.php?id= <?= $data->idbuku ?> onclick="return confirm("yakin data ingin dihapus?")"'>
+                href="Hapus.php?id= <?= $data->idbuku ?>" onclick="return confirm('yakin data ingin dihapus?')">
                 Hapus</a>
                 </div>
                 </td>
