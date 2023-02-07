@@ -11,7 +11,7 @@
 
     <center>
         <div class="tambah">
-            <a href="">TAMBAH</a>
+            <a href="Tambah.php">TAMBAH</a>
         </div>
     </center>
 
@@ -21,9 +21,10 @@
                 <th>No</th>
                 <!-- <th>ID Buku</th> -->
                 <th>Judul Buku</th>
+                <th>Deskripsi</th>
                 <th>Penulis</th>
                 <th>Penerbit</th>
-                <!-- <th>Cover</th> -->
+                <th>Cover</th>
                 <th>Aksi</th>
             </tr>
 
@@ -38,8 +39,10 @@
                 <tr>
                 <th><?= $no ?></th>
                 <td><?= $data->judul ?></td>
+                <td><?= $data->deskripsi?></td>
                 <td><?= $data->penulis ?></td>
                 <td><?= $data->penerbit ?></td>
+                <td><img src=images/<?= $data->gambar ?> width=100></td>
 
                 <!-- <td>
                 <center>X</center>
@@ -47,13 +50,12 @@
 
                 <td class='tombol'>
                 <div class='ubah'>
-                <a href='Ubah.php'>Ubah</a>
+                <a href="Ubah.php?id=<?= $data -> idbuku ?>">UBAH</a>
                 </div>
 
                 <div class='hapus'>
-                <a
-                href="Hapus.php?id= <?= $data->idbuku ?>" onclick="return confirm('yakin data ingin dihapus?')">
-                Hapus</a>
+                <a href="Hapus.php?id=<?= $data->idbuku ?>" onclick="return confirm('yakin data ingin dihapus?')">
+                HAPUS</a>
                 </div>
                 </td>
                 </tr>
