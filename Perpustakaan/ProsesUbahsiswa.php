@@ -6,6 +6,7 @@ if (isset($_POST['ubahsiswa'])) {
     $nis = $_POST['nis'];
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
+    $jurusan = $_POST['jurusan'];
     // $penulis = $_POST['penulis'];
     // $penerbit = $_POST['penerbit'];
 
@@ -27,7 +28,7 @@ if (isset($_POST['ubahsiswa'])) {
         // }
 
         $query = mysqli_query($koneksi, "UPDATE siswa SET
-        nis = '$nis',nama = '$nama', kelas = '$kelas'
+        nis = '$nis',nama = '$nama', kelas = '$kelas', jurusan = '$jurusan'
          
         WHERE id = '$id'");
 

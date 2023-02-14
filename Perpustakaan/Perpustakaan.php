@@ -30,7 +30,7 @@ if ($_SESSION['login'] == null){
             </div><br><br>
 
             <div class="pilihan">
-                <a style="text-decoration: none; background-color: red; color: white; padding: 10px; border-radius: 20px;" href="PeminjamanBuku.php">Peminjaman Buku</a>
+                <a style="text-decoration: none; background-color: red; color: white; padding: 10px; border-radius: 20px;" href="Peminjaman.php">Peminjaman Buku</a>
             </div>   <br><br>
 
             <div class="pilihan">

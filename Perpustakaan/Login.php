@@ -2,7 +2,8 @@
     <head>
         <title>Login Perpustakaan</title>
     </head>
-    <body>
+    <center>
+        <body>
         <h3>Login Akun Perpustakaan</h3>
         <hr>
         
@@ -11,15 +12,15 @@
         $pesan = $_GET['err'];
 
         if ($pesan == 'logout'){
-            echo "ANDA TELAH LOGOUT";
+            echo "<center><h3 style='background-color: red; color: white; padding: 10px; width: 300px; border-radius: 30px;'>ANDA TELAH LOGOUT</h3></center>";
         }
 
         if ($pesan == 'gagallogin'){
-            echo "ANDA GAGAL LOGIN!";
+            echo "<center><h3 style='background-color: purple; color: white; padding: 10px; width: 300px; border-radius: 30px;'>ANDA GAGAL LOGIN</h3></center>";
         }
 
         if ($pesan == 'ilegal') {
-            echo "ANDA MAU NYUSUP YA, LOGIN DULU BEB";
+            echo "<center><h3 style='background-color: purple; color: white; padding: 10px; width: 300px; border-radius: 30px;'>MAU NYUSUP KAH MANIEZ</h3></center>";
         }
         // }
         ?>
@@ -55,4 +56,5 @@
             </table>
         </form>
     </body>
+    </center>
 </html>

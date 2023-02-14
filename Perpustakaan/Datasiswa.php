@@ -5,7 +5,7 @@
     </head>
     <body>
 
-    <h1>DAFTAR LIST PENGGUNA</h1>
+    <h1>DAFTAR LIST SISWA</h1>
 
        <table border="5">
 
@@ -23,6 +23,7 @@
                 <th>NIS</th>
                 <th>Nama</th>
                 <th>Kelas</th>
+                <th>Jurusan</th>
                 <th>Aksi</th>
             </tr>
 
@@ -39,6 +40,7 @@
                 <td><?= $data->nis ?></td>
                 <td><?= $data->nama?></td>
                 <td><?= $data->kelas ?></td>
+                <td><?= $data->jurusan ?></td>
 
                 <!-- <td>
                 <center>X</center>

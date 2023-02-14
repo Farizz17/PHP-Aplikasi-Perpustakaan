@@ -71,6 +71,31 @@ require_once("Koneksi.php");
 
             <tr>
                 <td>
+                <label>Kelas</label>
+                </td>
+
+                <td>
+                <label>:</label>
+                </td>
+
+                <td>
+                <!-- <input type="text" name="kelas"> -->
+                <select name="jurusan" id="">
+                    <option value="TJKT">TJKT</option>
+                    <option value="PPLG">PPLG</option>
+                    <option value="PH">PH</option>
+                    <option value="SM">SM</option>
+                    <option value="TKR">TKR</option>
+                    <option value="AP">AP</option>
+                    <option value="AKL">AKL</option>
+                    <option value="EI">EI</option>
+                    <option value="TITL">TITL</option>
+                </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
                     <input type="submit" name="tambahsiswa" id="">
                 </td>
             </tr>  
