@@ -3,7 +3,7 @@
 require_once("Koneksi.php");
 $id = $_GET['id'];
 
-$query = mysqli_query($koneksi, "SELECT * FROM users WHERE id = '$id'");
+$query = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id = '$id'");
 
 while($data = mysqli_fetch_object($query)) {
 
@@ -18,14 +18,14 @@ while($data = mysqli_fetch_object($query)) {
     <h1>Ubah Data Pengguna</h1>
     <hr>
 
-         <form action="ProsesUbahuser.php" method="POST" enctype="multipart/form-data">
+         <form action="ProsesUbahsiswa.php" method="POST">
         <table>
 
             <tr>
                 <input name='id' type='hidden' value="<?= $data->id; ?>">
 
                 <td>
-                <label>Username</label>
+                <label>NIS</label>
                 </td>
 
                 <td>
@@ -33,7 +33,7 @@ while($data = mysqli_fetch_object($query)) {
                 </td>
 
                 <td>
-                <input type="text" name="username" value="<?= $data->username; ?>">
+                <input type="text" name="nis" value="<?= $data->nis; ?>">
                 </td>
             </tr>
 
@@ -41,7 +41,7 @@ while($data = mysqli_fetch_object($query)) {
                 <input name='id' type='hidden' value="<?= $data->id; ?>">
 
                 <td>
-                <label>Password</label>
+                <label>Nama</label>
                 </td>
 
                 <td>
@@ -49,13 +49,13 @@ while($data = mysqli_fetch_object($query)) {
                 </td>
 
                 <td>
-                <input type="password" name="password" value="<?= $data->password; ?>">
+                <input type="text" name="nama" value="<?= $data->nama; ?>">
                 </td>
             </tr>
 
             <tr>
                 <td>
-                <label>Level</label>
+                <label>Kelas</label>
                 </td>
 
                 <td>
@@ -63,16 +63,18 @@ while($data = mysqli_fetch_object($query)) {
                 </td>
 
                 <td>
-                <!-- <input type="text" name="level" value="<?= $data->level; ?>"> -->
-                <select name="level" id="">
-                    <option value="Petugas">Petugas</option>
-                    <option value="Siswa">Siswa</option>
+                <!-- <input type="text" name="kelas" value="<?= $data->kelas; ?>"> -->
+                <select name="kelas" id="">
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                </select>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <center><input type="submit" name="ubahuser" id=""></center>
+                    <center><input type="submit" name="ubahsiswa" id=""></center>
                 </td>
             </tr>  
         </table>

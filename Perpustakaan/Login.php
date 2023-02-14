@@ -19,7 +19,7 @@
         }
 
         if ($pesan == 'ilegal') {
-            echo "ANDA MAU NYUSUP YA, LOGIN DULU BG";
+            echo "ANDA MAU NYUSUP YA, LOGIN DULU BEB";
         }
         // }
         ?>

@@ -13,7 +13,7 @@ require_once("Koneksi.php");
     <h1>Tambah Data Pengguna</h1>
     <hr>
 
-         <form action="ProsesTambahuser.php" method="POST">
+         <form action="ProsesTambahsiswa.php" method="POST">
         <table>
 
         <tr>
@@ -24,7 +24,7 @@ require_once("Koneksi.php");
 
             <tr>
                 <td>
-                <label>Username</label>
+                <label>NIS</label>
                 </td>
 
                 <td>
@@ -32,13 +32,13 @@ require_once("Koneksi.php");
                 </td>
 
                 <td>
-                <input type="text" name="username">
+                <input type="text" name="nis">
                 </td>
             </tr>
 
             <tr>
                 <td>
-                <label>Password</label>
+                <label>Nama</label>
                 </td>
 
                 <td>
@@ -46,13 +46,13 @@ require_once("Koneksi.php");
                 </td>
 
                 <td>
-                <input type="password" name="password">
+                <input type="text" name="nama">
                 </td>
             </tr>
 
             <tr>
                 <td>
-                <label>Level</label>
+                <label>Kelas</label>
                 </td>
 
                 <td>
@@ -60,18 +60,18 @@ require_once("Koneksi.php");
                 </td>
 
                 <td>
-                <!-- <input type="text" name="level"> -->
-                <select name="level" id="">
-                    <option value="Petugas">Petugas</option>
-                    <option value="Siswa">Siswa</option>
-                    <!-- <option value="XII">XII</option> -->
+                <!-- <input type="text" name="kelas"> -->
+                <select name="kelas" id="">
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
                 </select>
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    <input type="submit" name="tambahusers" id="">
+                    <input type="submit" name="tambahsiswa" id="">
                 </td>
             </tr>  
         </table>
