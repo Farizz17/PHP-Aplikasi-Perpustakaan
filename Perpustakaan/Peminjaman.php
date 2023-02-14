@@ -12,13 +12,11 @@ require_once("Koneksi.php");
         <form action="Prosespinjam.php" method="POST">
             <table style="background-color: burlywood; padding: 20px; border-radius: 20px;">
 
-                    <!-- <tr>
-                        <td>Tanggal Peminjaman</td>
-                        <td>:</td>
-                        <td>
-                            <input type="date">
-                        </td>
-                    </tr> -->
+                <tr>
+                    <td>NIS</td>
+                    <td>:</td>
+                    <td><input type="text" name="nis"> <input type="submit" name="cari" value="cari"></td>
+                </tr>
 
                 <tr>
                     <td>Siswa</td>
@@ -29,7 +27,8 @@ require_once("Koneksi.php");
                             $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa");
                              while($datasiswa = mysqli_fetch_object($querysiswa)){
                             ?>
-                                  <option value="<?= $datasiswa ->  id?>"><?= $datasiswa -> nama?></option>
+                                <!-- <option value="<?= $datasiswa ->  id?> disabled>Pilih Siswa</option> -->
+                                  <option value="<?= $datasiswa ->  id?>" disabled><?= $datasiswa -> nama?></option>
                             <?php
                             }
                             ?>
@@ -41,7 +40,7 @@ require_once("Koneksi.php");
                     <td>Buku</td>
                     <td>:</td>
                     <td>
-                        <select name="siswa" id="">
+                        <select name="buku" id="">
                             <?php
                             $querybuku = mysqli_query($koneksi, "SELECT * FROM buku");
                              while($databuku = mysqli_fetch_object($querybuku)){
@@ -69,5 +68,50 @@ require_once("Koneksi.php");
                 </tr>
             </table>
         </form>
+
+        <table border="5px">
+            <tr>
+            <th>No</th>
+            <th>Nomor Peminjaman</th>
+            <th>NIS</th>
+            <th>Nama Siswa</th>
+            <th>Judul Buku</th>
+            <th>Tanggal Peminjaman</th>
+            <th>Tanggal Pengembalian</th>
+            <!-- <td>No</td> -->
+            </tr>
+
+        <?php
+        // $nis = $_POST['nis'];
+        $no = 1;
+
+        $querypinjam = mysqli_query
+        ($koneksi, "SELECT * FROM pinjam
+        inner join buku on buku.idbuku = pinjam.idbuku
+        inner join siswa on siswa.id = pinjam.idsiswa");
+
+        while($datapinjam = mysqli_fetch_object($querypinjam)){
+        ?>
+
+        <tr>
+            <td><?= $no++ ?></td>
+            <td><?= $datapinjam->nomorpeminjaman ?></td>
+            <td><?= $datapinjam->nis ?></td>
+            <td><?= $datapinjam->nama ?></td>
+            <td><?= $datapinjam->judul ?></td>
+            <td><?= $datapinjam->tanggalpinjam ?></td>
+            <td><?= $datapinjam->tanggalkembali ?></td>
+        </tr>
+
+        <?php
+        }?>
+        </table>
+        <br>
+             <div class="pilihan">
+                <a style="text-decoration: none; background-color: blue; color: white; padding: 10px; border-radius: 20px;" href="Perpustakaan.php">Kembali Ke Halaman Depan</a>
+            </div>
+
+        <!-- <a href="Perpustakaan.php">BACK</a> -->
+
     </body>
 </html>
