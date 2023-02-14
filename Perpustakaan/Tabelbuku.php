@@ -64,6 +64,9 @@
             }
             ?>
         </table>
+
+        <br>
+        <a style="text-decoration: none; background-color: blue; color: white; padding: 10px; border-radius: 20px;" href="Perpustakaan.php">Kembali Ke Halaman Depan</a>
     </body>
 </html>
 

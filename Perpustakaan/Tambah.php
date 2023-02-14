@@ -8,7 +8,7 @@ require_once("Koneksi.php");
     <head>
         <title>Tambah Buku</title>
     </head>
-    <body style="background-color: black; color: white;">
+    <body style="background-color: burlywood; color: black;">
 
     <h1>Tambah Data Buku</h1>
     <hr>
