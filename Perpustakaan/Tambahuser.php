@@ -63,7 +63,7 @@ require_once("Koneksi.php");
                 <!-- <input type="text" name="level"> -->
                 <select name="level" id="">
                     <option value="Petugas">Petugas</option>
-                    <option value="Siswa">Siswa</option>
+                    <!-- <option value="Siswa">Siswa</option> -->
                     <!-- <option value="XII">XII</option> -->
                 </select>
                 </td>

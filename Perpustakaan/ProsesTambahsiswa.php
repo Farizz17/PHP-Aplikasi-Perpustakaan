@@ -11,6 +11,8 @@ if (isset($_POST['tambahsiswa'])) {
         (null,'$nis','$nama','$kelas','$jurusan')");
 
         if ($query) {
+            $queryusers = mysqli_query($koneksi, "INSERT INTO users VALUES
+                    (null,'$nis',md5('$nis'),'Siswa','$nis')");
             header('location:Datasiswa.php');
         } else {
             echo "gagal menyimpan data";

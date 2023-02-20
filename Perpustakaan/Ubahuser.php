@@ -66,7 +66,7 @@ while($data = mysqli_fetch_object($query)) {
                 <!-- <input type="text" name="level" value="<?= $data->level; ?>"> -->
                 <select name="level" id="">
                     <option value="Petugas">Petugas</option>
-                    <option value="Siswa">Siswa</option>
+                    <!-- <option value="Siswa">Siswa</option> -->
                 </td>
             </tr>
 

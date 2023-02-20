@@ -59,7 +59,8 @@ if ($_SESSION['login'] == null){
 
             <center> <h4>
             Nama : <?= $_SESSION['nama'] ?> <br>
-            Level : <?= $_SESSION['level'] ?>
+            Level : <?= $_SESSION['level'] ?> <br>
+            NIS : <?= $_SESSION['nis'] ?>
             </h4></center>
 
     </body>

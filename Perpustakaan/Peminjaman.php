@@ -15,7 +15,8 @@ require_once("Koneksi.php");
                 <tr>
                     <td>NIS</td>
                     <td>:</td>
-                    <td><input type="text" name="nis"> <input type="submit" name="cari" value="cari"></td>
+                    <td><input type="text" name="nis"></td>
+                    <td><input type="submit" value="cari"></td>
                 </tr>
 
                 <tr>
@@ -23,15 +24,28 @@ require_once("Koneksi.php");
                     <td>:</td>
                     <td>
                         <select name="siswa" id="">
+
+                            <!-- <?php
+                            // if(isset($_GET['cari'])){
+                            // $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa WHERE nis like '%" . $_GET['cari'] . "%'");
+                            //  while($datasiswa = mysqli_fetch_object($querysiswa)){
+                            // ?>
+                            //       <option value="<?= $datasiswa ->  nis?>"><?= $datasiswa -> nama?></option>
+                            // <?php
+                            // }} else {
+                            //      $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa");
+                            // }
+                            // ?> -->
+
                             <?php
                             $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa");
                              while($datasiswa = mysqli_fetch_object($querysiswa)){
                             ?>
-                                <!-- <option value="<?= $datasiswa ->  id?> disabled>Pilih Siswa</option> -->
-                                  <option value="<?= $datasiswa ->  id?>" disabled><?= $datasiswa -> nama?></option>
+                                  <option value="<?= $datasiswa ->  nis?>" ><?= $datasiswa -> nama?></option>
                             <?php
                             }
                             ?>
+
                         </select>
                     </td>
                 </tr>
@@ -88,7 +102,7 @@ require_once("Koneksi.php");
         $querypinjam = mysqli_query
         ($koneksi, "SELECT * FROM pinjam
         inner join buku on buku.idbuku = pinjam.idbuku
-        inner join siswa on siswa.id = pinjam.idsiswa");
+        inner join siswa on siswa.nis = pinjam.nis");
 
         while($datapinjam = mysqli_fetch_object($querypinjam)){
         ?>

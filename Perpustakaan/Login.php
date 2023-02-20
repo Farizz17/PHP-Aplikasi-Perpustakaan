@@ -27,6 +27,11 @@
 
         <form action="ProsesLogin.php" method="POST">
             <table style="background-color: burlywood; border-radius: 10px;">
+
+                <!-- <tr>
+                    <td><input type="text" name="id" hidden></td>
+                </tr> -->
+
                 <tr>
                     <td>Username</td>
                     <td>:</td>
