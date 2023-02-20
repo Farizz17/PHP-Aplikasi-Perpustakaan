@@ -1,5 +1,6 @@
 <?php
 require_once("Koneksi.php");
+@$nis = $_GET['nis'];
 ?>
 
 <html>
@@ -13,42 +14,35 @@ require_once("Koneksi.php");
             <table style="background-color: burlywood; padding: 20px; border-radius: 20px;">
 
                 <tr>
-                    <td>NIS</td>
+                    <form action="Prosescari.php" method="POST">
+                        <td>NIS</td>
                     <td>:</td>
-                    <td><input type="text" name="nis"></td>
-                    <td><input type="submit" value="cari"></td>
+                    <td>
+                    <input type="text" name="nis">
+                    <input type="submit" value="Cari">
+                    </td>
+                    </form>
                 </tr>
 
                 <tr>
-                    <td>Siswa</td>
-                    <td>:</td>
-                    <td>
-                        <select name="siswa" id="">
+                    <form action="Prosespinjam.php" method="POST">
 
-                            <!-- <?php
-                            // if(isset($_GET['cari'])){
-                            // $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa WHERE nis like '%" . $_GET['cari'] . "%'");
-                            //  while($datasiswa = mysqli_fetch_object($querysiswa)){
-                            // ?>
-                            //       <option value="<?= $datasiswa ->  nis?>"><?= $datasiswa -> nama?></option>
-                            // <?php
-                            // }} else {
-                            //      $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa");
-                            // }
-                            // ?> -->
+                        <td>Siswa</td>
+                        <td>:</td>
+                        <td>
+                        
+                        <?php
+                        $querysiswa = mysqli_query
+                        ($koneksi , "SELECT * FROM siswa WHERE nis = '$nis' ");
+                        $nama = mysqli_fetch_array($querysiswa);
+                        ?>
 
-                            <?php
-                            $querysiswa = mysqli_query($koneksi, "SELECT * FROM siswa");
-                             while($datasiswa = mysqli_fetch_object($querysiswa)){
-                            ?>
-                                  <option value="<?= $datasiswa ->  nis?>" ><?= $datasiswa -> nama?></option>
-                            <?php
-                            }
-                            ?>
+                        <input type="hidden" name="id" value="<?=$nama['nis']?>">
+                        <input type="text" name="siswa" value="<?=$nama['nama']?>">
 
-                        </select>
                     </td>
                 </tr>
+            </form>
 
                 <tr>
                     <td>Buku</td>

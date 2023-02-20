@@ -23,8 +23,7 @@ session_start();
             $querypinjam = mysqli_query
             ($koneksi, "SELECT * FROM pinjam
             INNER JOIN buku ON buku.idbuku = pinjam.idbuku
-            WHERE nis = $id
-            ");
+            WHERE nis = $id");
 
             while($datapinjam = mysqli_fetch_object($querypinjam)){
             ?>
