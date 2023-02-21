@@ -1,3 +1,10 @@
+<?php
+session_start();
+if ($_SESSION['login'] == null){
+    header('location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="Perpustakaan 2.0/favicon.ico">
+  <link rel="icon" type="image/png" href="../Perpustakaan 2.0/favicon.ico">
   <title>
     Perpustakaan 2.0
   </title>
@@ -27,7 +34,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
-        <img src="assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="../Perpustakaan 2.0/favicon.ico" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Perpustakaan V2</span>
       </a>
     </div>
@@ -69,8 +76,16 @@
           </ol>
           <h6 class="font-weight-bolder text-white mb-0">Dashboard Perpustakaan V2</h6>
         </nav>
+
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <span class="text-light btn btn-outline-light">
+              Selamat Datang, <?= $_SESSION['username'] ?>
+            </span>
+
+            <a class="text-light btn btn-outline-light ms-2" href="Routes/proses.php?aksi=logout">
+                  Log Out
+            </a>
           </div>
           <ul class="navbar-nav  justify-content-end">
            <li class="nav-item dropdown pe-2 d-flex align-items-center">

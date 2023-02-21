@@ -1,126 +1,108 @@
 <?php
-require_once("Koneksi.php");
+require_once("koneksi.php");
 @$nis = $_GET['nis'];
 error_reporting(0);
 ?>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
 
-<html>
-    <head>
-        <title>FORM PEMINJAMAN BUKU</title>
-    </head>
-    <body>
-        <h1>FORM PEMINJAMAN BUKU</h1>
-
-        <form action="Prosespinjam.php" method="POST">
-            <table style="background-color: burlywood; padding: 20px; border-radius: 20px;">
-
-                <tr>
-                    <form action="Prosescari.php" method="POST">
-                        <td>NIS</td>
-                    <td>:</td>
-                    <td>
-                    <input type="text" name="nis" autofocus>
-                    <input type="submit" name="cari" value="Cari">
-                    </td>
-                    </form>
-                </tr>
-
-                <tr>
-                    <form action="Prosespinjam.php" method="POST">
-
-                        <td>Siswa</td>
-                        <td>:</td>
-                        <td>
-                        
-                        <?php
-                        $querysiswa = mysqli_query
-                        ($koneksi , "SELECT * FROM siswa WHERE nis = '$nis' ");
-                        $nama = mysqli_fetch_array($querysiswa);
-                        ?>
-
-                        <input type="hidden" name="id" value="<?=$nama['nis']?>"  >
-                        <input type="text" name="siswa" value="<?=$nama['nama']?>">
-
-                    </td>
-                </tr>
+    
+    <table>
+        <form action="Prosescari.php" method="post">
+        <tr>
+                <td>cari</td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="nis">
+                    <input type="submit" value="cari">
+                </td>
             </form>
-
-                <tr>
-                    <td>Buku</td>
-                    <td>:</td>
-                    <td>
-                        <select name="buku" id="">
-                            <?php
-                            $querybuku = mysqli_query($koneksi, "SELECT * FROM buku");
-                             while($databuku = mysqli_fetch_object($querybuku)){
-                            ?>
-                                  <option value="<?= $databuku ->  idbuku?>"><?= $databuku -> judul?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Tanggal Pengembalian</td>
-                    <td>:</td>
-                    <td>
-                        <input type="date" name="tanggalkembali">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <input type="submit" name="simpan" value="Simpan">
-                    </td>
-                </tr>
-            </table>
-        </form>
-
-        <table border="5px">
-            <tr>
-            <th>No</th>
-            <th>Nomor Peminjaman</th>
-            <th>NIS</th>
-            <th>Nama Siswa</th>
-            <th>Judul Buku</th>
-            <th>Tanggal Peminjaman</th>
-            <th>Tanggal Pengembalian</th>
-            <!-- <td>No</td> -->
-            </tr>
-
+        </tr>
+        <tr>
+    <form action="Prosespinjam.php" method="POST">
+        <td>Siswa</td>
+        <td>:</td>
+        <td>
+        
         <?php
-        // $nis = $_POST['nis'];
-        $no = 1;
-
-        $querypinjam = mysqli_query
-        ($koneksi, "SELECT * FROM pinjam
-        inner join buku on buku.idbuku = pinjam.idbuku
-        inner join siswa on siswa.nis = pinjam.nis");
-
-        while($datapinjam = mysqli_fetch_object($querypinjam)){
+        $query_siswa = mysqli_query($koneksi , "select * from siswa where nis='$nis'");
+        $data_siswa = mysqli_fetch_array($query_siswa)
         ?>
 
-        <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $datapinjam->nomorpeminjaman ?></td>
-            <td><?= $datapinjam->nis ?></td>
-            <td><?= $datapinjam->nama ?></td>
-            <td><?= $datapinjam->judul ?></td>
-            <td><?= $datapinjam->tanggalpinjam ?></td>
-            <td><?= $datapinjam->tanggalkembali ?></td>
-        </tr>
-
+            <input type="hidden" name="id" value="<?=$data_siswa['nis']?>">
+            <input type="text" name="siswa" value="<?=$data_siswa['nama']?>" disabled>
+      
+        </td>
+    </tr>
+    <tr>
+        <td>Buku</td>
+        <td>:</td>
+        <td>
+        <select name="buku" >
         <?php
-        }?>
-        </table>
-        <br>
-             <div class="pilihan">
-                <a style="text-decoration: none; background-color: blue; color: white; padding: 10px; border-radius: 20px;" href="Perpustakaan.php">Kembali Ke Halaman Depan</a>
-            </div>
+        $query_buku = mysqli_query($koneksi , "select * from buku");
+        while($data_buku = mysqli_fetch_object($query_buku)) {
+        ?>
 
-        <!-- <a href="Perpustakaan.php">BACK</a> -->
+        <option value="<?=$data_buku->idbuku?>" ><?=$data_buku->judul?></option>
+        <?php
+        }
+        ?>
+        </select>
+        </td>
+    </tr>
 
-    </body>
+    <tr>    
+        <td>tanggal kembali</td>
+        <td>:</td>
+        <td><input type="date" name="tgl_kembali"></td>
+    </tr>
+
+    <tr>
+      <td>
+      <input type="submit" name="simpan" value="simpan">
+      </td>  
+    </tr>
+    
+</table>
+</form>
+
+<table border="1" cellspacing="0" cellpadding="5">
+<tr>
+    <td>No</td>
+    <td>No_peminjaman</td>
+    <td>id_buku</td>
+    <td>judul_buku</td>
+    <td>nama siswa</td>
+    <td>tgl_pinjam</td>
+    <td>tgl_kembali</td>
+</tr>
+<?php
+$no = 1;
+$query_peminjaman= mysqli_query(
+    $koneksi,
+"select * from pinjam
+inner join buku on buku.idbuku = pinjam.idbuku
+inner join siswa on siswa.nis = pinjam.nis");
+while($data_peminjaman = mysqli_fetch_object($query_peminjaman)) {
+
+?>
+<tr>
+    <td><?=$no?></td>
+    <td><?=$data_peminjaman->nomorpeminjaman?></td>
+    <td><?=$data_peminjaman->nis?></td>
+    <td><?=$data_peminjaman->judul?></td>
+    <td><?=$data_peminjaman->nama?></td>
+    <td><?=$data_peminjaman->tanggalpinjam?></td>
+    <td><?=$data_peminjaman->tanggalkembali?></td>
+</tr>
+<?php
+$no++;
+}
+?>
+</table>
+</body>
 </html>

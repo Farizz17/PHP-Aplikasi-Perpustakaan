@@ -1,7 +1,6 @@
 <?php
 require_once("koneksi.php");
-if(isset($_POST['id'])) {
-$nopinjam =$_POST['nis'] . "-" . date('Y-m-d');
+$nopinjam =$_POST['id'] . "-" . date('Y-m-d');
 $idbuku = $_POST['buku'];
 $idsiswa = $_POST['id'];
 $tglpinjam = date('Y-m-d');
@@ -14,7 +13,6 @@ $query = mysqli_query($koneksi , "INSERT INTO pinjam VALUES
     if($query) {
         header('location:Peminjaman.php');
     }
-}
 
 if (isset($_POST['cari'])) {
     $query = mysqli_query($koneksi , "SELECT * FROM siswa" );
