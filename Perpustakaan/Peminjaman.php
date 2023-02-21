@@ -58,7 +58,7 @@ error_reporting(0);
     <tr>    
         <td>tanggal kembali</td>
         <td>:</td>
-        <td><input type="date" name="tgl_kembali"></td>
+        <td><input type="date" name="tanggalkembali"></td>
     </tr>
 
     <tr>
