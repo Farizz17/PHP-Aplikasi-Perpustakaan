@@ -1,6 +1,7 @@
 <?php
 require_once("Koneksi.php");
 @$nis = $_GET['nis'];
+error_reporting(0);
 ?>
 
 <html>
@@ -18,8 +19,8 @@ require_once("Koneksi.php");
                         <td>NIS</td>
                     <td>:</td>
                     <td>
-                    <input type="text" name="nis">
-                    <input type="submit" value="Cari">
+                    <input type="text" name="nis" autofocus>
+                    <input type="submit" name="cari" value="Cari">
                     </td>
                     </form>
                 </tr>
@@ -37,7 +38,7 @@ require_once("Koneksi.php");
                         $nama = mysqli_fetch_array($querysiswa);
                         ?>
 
-                        <input type="hidden" name="id" value="<?=$nama['nis']?>">
+                        <input type="hidden" name="id" value="<?=$nama['nis']?>"  >
                         <input type="text" name="siswa" value="<?=$nama['nama']?>">
 
                     </td>

@@ -1,25 +1,24 @@
 <?php
-require_once("Koneksi.php");
+require_once("koneksi.php");
+if(isset($_POST['id'])) {
+$nopinjam =$_POST['nis'] . "-" . date('Y-m-d');
+$idbuku = $_POST['buku'];
+$idsiswa = $_POST['id'];
+$tglpinjam = date('Y-m-d');
+$tglkembali = $_POST['tanggalkembali'];
 
-$nomorpeminjaman = $_POST['siswa'] . "-" . date('Y-m-d');
-$buku = $_POST['buku'];
-$nis = $_POST['siswa'];
-$tanggalpinjam = date('Y-m-d');
-$tanggalkembali = $_POST['tanggalkembali'];
+$query = mysqli_query($koneksi , "INSERT INTO pinjam VALUES 
+('$nopinjam','$idbuku','$idsiswa','$tglpinjam','$tglkembali')");
 
-// echo $nomorpinjam, "||||", $buku, "||||", $siswa, "||||", $tanggalkembali, "||||", $tanggalpinjam;
 
-$query = mysqli_query($koneksi, "INSERT INTO pinjam VALUES
-('$nomorpeminjaman', '$buku', '$nis', '$tanggalpinjam', '$tanggalkembali')");
-
-if ($query){
-    header("location:Peminjaman.php");
+    if($query) {
+        header('location:Peminjaman.php');
+    }
 }
 
-// if(isset($_POST['cari'])){
-//     $query = mysqli_query($koneksi, "SELECT * FROM siswa");
-//     if ($query){
-//         header('location:Peminjaman.php');
-//     }
-// }
-?>
+if (isset($_POST['cari'])) {
+    $query = mysqli_query($koneksi , "SELECT * FROM siswa" );
+    if($query) {
+        header('location:Peminjaman.php');
+    }
+}
