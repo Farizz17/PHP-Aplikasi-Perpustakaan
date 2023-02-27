@@ -7,7 +7,7 @@ if ($_POST['login']){
 
     if($username == '' || $password == ''){
         session_start();
-        $_SESSION['fail'] = 'Username atau Password Salah!';
+        $_SESSION['fail'] = 'Anda Gagal Login!';
         header('location:../login.php');
     } else {
          $perpus->proseslogin($username, $password);
