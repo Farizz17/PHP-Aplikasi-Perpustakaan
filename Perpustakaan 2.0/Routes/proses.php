@@ -1,7 +1,8 @@
 <?php
 include '../Controllers/db.php';
 
-if ($_POST['login']){
+// PROSES LOGIN DAN LOGOUT
+if (@$_POST['login']){
     $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -14,10 +15,17 @@ if ($_POST['login']){
     }
 }
 
-if ($_GET['aksi'] == 'logout'){
+if (@$_GET['aksi'] == 'logout'){
     $perpus->logout();
 }
+// PROSES LOGIN DAN LOGOUT
 
-// if ($_GET['aksi'] == 'ilegal'){
-//     $perpus->ilegal();
-// }
+// PROSES TAMBAH USERS
+if(@$_POST['simpanusers']){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // echo $username, $password;
+    $perpus->prosestambah($username, $password);
+}
+// PROSES TAMBAH USERS
