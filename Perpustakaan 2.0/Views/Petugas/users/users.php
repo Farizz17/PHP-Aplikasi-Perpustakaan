@@ -28,8 +28,8 @@
         <td><?= $u->username; ?></td>
         <td><?= $u->level; ?></td>
         <td>
-            <a class="btn btn-primary" href="">Ubah</a>
-            <a class="btn btn-danger" href="">Hapus</a>
+            <a class="btn btn-primary" href="dashboard.php?pages=users&act=ubah&id=<?= $u->user_id ?>">Ubah</a>
+            <a class="btn btn-danger" href="Routes/proses.php?act=hapususers&id=<?= $u->user_id ?>" onclick="return confirm('yakin user ingin dihapus?')">Hapus</a>
         </td>
     </tr>
 

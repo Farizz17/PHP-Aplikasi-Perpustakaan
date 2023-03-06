@@ -194,13 +194,14 @@ include "Controllers/db.php";
                   <div class="numbers">
                     
 
-                    <h1>1</h1>
+                    <h5>Jumlah Users</h5>
+                    <h5><?= $perpus->jumlahusers() ?></h5>
 
                   </div>
                 </div>
                 <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                  <div class="icon icon-shape bg-gradient-warning shadow-primary text-center rounded-circle">
+                    <i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -215,7 +216,8 @@ include "Controllers/db.php";
                   <div class="numbers">
                     
 
-                    <h1>2</h1>
+                     <h5>Jumlah Siswa</h5>
+                    <h5><?= $perpus->jumlahsiswa() ?></h5>
 
                   </div>
                 </div>
@@ -284,6 +286,9 @@ include "Controllers/db.php";
               @$act = $_GET['act'];
               if($act == 'tambah'){
                 include "views/petugas/users/tambah.php";
+              }
+              else if($act == 'ubah'){
+                include "views/petugas/users/ubah.php";
               } else {
                 include "views/petugas/users/users.php";
               }
@@ -299,8 +304,11 @@ include "Controllers/db.php";
             }
             elseif($pages == 'siswa'){
               @$act = $_GET['act'];
-              if($act == 'tambah'){
+              if($act == 'tambahsiswa'){
                 include "views/petugas/siswa/tambah.php";
+              }
+               else if($act == 'ubahsiswa'){
+                include "views/petugas/siswa/ubah.php";
               }
               else {
               include "views/petugas/siswa/siswa.php";
@@ -362,13 +370,13 @@ include "Controllers/db.php";
                   <a href="https://sites.google.com/view/pplg2024/beranda" class="nav-link text-muted" target="_blank">RPL Tim</a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link text-muted" target="_blank">Tentang Kami</a>
+                  <a href="https://sites.google.com/view/pplg2024/beranda" class="nav-link text-muted" target="_blank">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://rizzggwp.blogspot.com/" class="nav-link text-muted" target="_blank">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link pe-0 text-muted" target="_blank">Lisensi</a>
+                  <a href="https://sites.google.com/view/pplg2024/beranda" class="nav-link pe-0 text-muted" target="_blank">Lisensi</a>
                 </li>
               </ul>
             </div>
@@ -404,7 +412,7 @@ include "Controllers/db.php";
   unset($_SESSION['success'])
   ?>
 
-   <?php
+  <?php
   if(@$_SESSION['fail'] != ''){
   ?>
 

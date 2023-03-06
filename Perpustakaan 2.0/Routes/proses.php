@@ -25,7 +25,56 @@ if(@$_POST['simpanusers']){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // echo $username, $password;
-    $perpus->prosestambah($username, $password);
+    $perpus->prosestambahusers($username, $password);
 }
 // PROSES TAMBAH USERS
+
+// PROSES UBAH USERS
+if(@$_POST['ubahusers']){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $id = $_POST['id'];
+
+    $perpus->ubahusers($id, $username, $password);
+}
+// PROSES UBAH USERS
+
+// PROSES HAPUS USERS
+if(@$_GET['act'] == 'hapususers'){
+    $id = $_GET['id'];
+   $perpus->hapususers($id);
+}
+// PROSES HAPUS USERS
+
+
+// PROSES TAMBAH SISWA
+if(@$_POST['simpansiswa']){
+    $nisn = $_POST['nisn'];
+    $nama = $_POST['nama'];
+    $kelas = $_POST['kelas'];
+
+    $foto = $_FILES['foto']['name'];
+
+    $perpus->prosestambahsiswa($nisn, $nama, $kelas, $foto);
+}
+// PROSES TAMBAH SISWA
+
+// PROSES UBAH SISWA
+if(@$_POST['ubahsiswa']){
+    $nisn = $_POST['nisn'];
+    $nama = $_POST['nama'];
+    $kelas = $_POST['kelas'];
+    $foto = $_POST['foto'];
+    
+    $id = $_POST['id'];
+
+    $perpus->ubahsiswa($nisn, $nama, $kelas, $foto, $id);
+}
+// PROSES UBAH SISWA
+
+// PROSES HAPUS SISWA
+if(@$_GET['act'] == 'hapussiswa'){
+    $id = $_GET['id'];
+    $perpus->hapussiswa($id);
+}
+// PROSES HAPUS SISWA
