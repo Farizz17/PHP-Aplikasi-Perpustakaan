@@ -21,7 +21,7 @@ $ubh = $perpus->tampilubahsiswa(@$_GET['id']);
                 <input class="form-control" type="text" name="kelas" value="<?= $ubh->kelas ?>"><br>
 
                 <label for="">Foto :</label>
-                <input class="form-control" type="file" name="foto" value="<?= $ubh->foto ?>"><br>
+                <input class="form-control" type="file" name="foto"><br>
 
             <input class="btn btn-success form-control" type="submit" name="ubahsiswa" id="">
 

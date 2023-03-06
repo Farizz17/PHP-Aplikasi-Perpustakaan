@@ -64,8 +64,7 @@ if(@$_POST['ubahsiswa']){
     $nisn = $_POST['nisn'];
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
-    $foto = $_POST['foto'];
-    
+    $foto = $_FILES['foto']['name'];
     $id = $_POST['id'];
 
     $perpus->ubahsiswa($nisn, $nama, $kelas, $foto, $id);
@@ -76,5 +75,51 @@ if(@$_POST['ubahsiswa']){
 if(@$_GET['act'] == 'hapussiswa'){
     $id = $_GET['id'];
     $perpus->hapussiswa($id);
+}
+// PROSES HAPUS SISWA
+
+
+
+
+
+
+
+
+
+
+
+
+// PROSES TAMBAH SISWA
+if(@$_POST['simpanbuku']){
+    $judul = $_POST['judul'];
+    $deskripsi = $_POST['deskripsi'];
+    $penulis = $_POST['penulis'];
+    $penerbit = $_POST['penerbit'];
+
+    $cover = $_FILES['cover']['name'];
+
+    $perpus->prosestambahbuku($judul, $deskripsi, $penulis, $penerbit, $cover);
+}
+// PROSES TAMBAH SISWA
+
+// PROSES UBAH SISWA
+if(@$_POST['ubahbuku']){
+     $judul = $_POST['judul'];
+    $deskripsi = $_POST['deskripsi'];
+    $penulis = $_POST['penulis'];
+    $penerbit = $_POST['penerbit'];
+
+    $id = $_POST['id'];
+
+    $cover = $_FILES['cover']['name'];
+
+    $perpus->ubahbuku($judul, $deskripsi, $penulis, $penerbit, $cover, $id);
+}
+// PROSES UBAH SISWA
+
+// PROSES HAPUS SISWA
+if(@$_GET['act'] == 'hapusbuku'){
+    $id = $_GET['id'];
+    $perpus->hapusbuku($id);
 }
 // PROSES HAPUS SISWA

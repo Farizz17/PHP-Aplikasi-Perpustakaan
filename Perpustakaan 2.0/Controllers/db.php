@@ -152,7 +152,7 @@ class perpustakaan
       {
           if ($nisn == '' || $nama == '' || $kelas == '' || $foto == '') {
               session_start();
-              $_SESSION['warning'] = "Data belum diisi, isi terlebih dahulu";
+              $_SESSION['fail'] = "Data belum diisi, isi terlebih dahulu";
               header('location:../dashboard.php?pages=siswa&act=tambahsiswa');
           }
           else {
@@ -183,13 +183,29 @@ class perpustakaan
       public function ubahsiswa($nisn, $nama, $kelas, $foto, $id)
       {
           if ($nisn == '' || $nama == '' || $kelas == '' || $foto == '') {
-              $query = $this->koneksi->query("UPDATE siswa SET nisn='$nisn',nama='$nama',kelas='$kelas',foto='$foto' WHERE siswa_id=$id");
+              session_start();
+              $_SESSION['fail'] = "User Gagal di Ubah";
+              header('location:../dashboard.php?pages=siswa');
           } else {
-              $query = $this->koneksi->query("UPDATE siswa SET nisn='$nisn',nama='$nama',kelas='$kelas',foto='$foto' WHERE siswa_id=$id");
+              $ukuran = $_FILES['foto']['size'];
+              $error = $_FILES['foto']['error'];
+  
+              if ($ukuran > 0 || $error == 0) {
+                  $move = move_uploaded_file($_FILES['foto']['tmp_name'], '../assets/img/' . $foto);
+                  if ($move) {
+                      echo "File '$foto' dengan ukuran $ukuran sudah terupload";
+                  } else {
+                      echo "Terjadi kesalahan mengupload";
+                  }
+              } else {
+                  echo "File Gagal Diupload" . $error;
+              }
           }
+
+            $query = $this->koneksi->query("UPDATE siswa SET nisn='$nisn',nama='$nama',kelas='$kelas',foto='$foto' WHERE siswa_id=$id");
           if ($query) {
               session_start();
-              $_SESSION['success'] = "User berhasil di ubah";
+              $_SESSION['success'] = "User Berhasil di Ubah";
               header('location:../dashboard.php?pages=siswa');
           }
       }
@@ -214,6 +230,109 @@ class perpustakaan
       public function jumlahsiswa()
       {
           $query = $this->koneksi->query("SELECT * FROM siswa");
+          return $query->num_rows;
+      }
+
+
+
+
+      public function listbuku()
+      {
+  
+          $query = $this->koneksi->query("SELECT * FROM buku");
+          while ($data = $query->fetch_object()) {
+              $hasil[] = $data;
+          }
+          return $hasil;
+      }
+
+      public function prosestambahbuku($judul, $deskripsi, $penulis, $penerbit, $cover)
+      {
+          if ($judul == '' || $deskripsi == '' || $penulis == '' || $penerbit == '') {
+            //   session_start();
+            //   $_SESSION['fail'] = "Data belum diisi, isi terlebih dahulu";
+            //   header('location:../dashboard.php?pages=buku&act=tambahbuku');
+          }
+          else {
+              $ukuran = $_FILES['cover']['size'];
+              $error = $_FILES['cover']['error'];
+  
+              if ($ukuran > 0 || $error == 0) {
+                  $move = move_uploaded_file($_FILES['cover']['tmp_name'], '../assets/img/' . $cover);
+                  if ($move) {
+                      echo "File '$cover' dengan ukuran $ukuran sudah terupload";
+                  } else {
+                      echo "Terjadi kesalahan mengupload";
+                  }
+              } else {
+                  echo "File Gagal Diupload" . $error;
+              }
+          }
+  
+          $query = $this->koneksi->query
+          ("INSERT INTO buku VALUES(null,'$judul','$deskripsi','$penulis','$penerbit', '$cover')");
+  
+          if ($query) {
+              session_start();
+              $_SESSION['success'] = "Buku berhasil di tambah";
+              header('location:../dashboard.php?pages=buku');
+          }
+      }
+
+
+      public function ubahbuku($judul, $deskripsi, $penulis, $penerbit, $cover, $id)
+      {
+          if ($judul == '' || $deskripsi == '' || $penulis == '' || $penerbit == '' || $cover == '') {
+            //   session_start();
+            //   $_SESSION['fail'] = "User Gagal di Ubah";
+            //   header('location:../dashboard.php?pages=buku');
+          } else {
+              $ukuran = $_FILES['foto']['size'];
+              $error = $_FILES['foto']['error'];
+  
+              if ($ukuran > 0 || $error == 0) {
+                  $move = move_uploaded_file($_FILES['foto']['tmp_name'], '../assets/img/' . $cover);
+                  if ($move) {
+                      echo "File '$cover' dengan ukuran $ukuran sudah terupload";
+                  } else {
+                      echo "Terjadi kesalahan mengupload";
+                  }
+              } else {
+                  echo "File Gagal Diupload" . $error;
+              }
+          }
+
+            $query = $this->koneksi->query("UPDATE buku SET judul='$judul',deskripsi='$deskripsi',penulis='$penulis',penerbit='$penerbit',gambar='$cover' WHERE idbuku=$id");
+
+          if ($query) {
+              session_start();
+              $_SESSION['success'] = "Buku Berhasil di Ubah";
+              header('location:../dashboard.php?pages=buku');
+          }
+      }
+
+      public function tampilubahbuku($id)
+      {
+          $query = $this->koneksi->query("SELECT * FROM buku where idbuku=$id");
+          $data = $query->fetch_object();
+          return $data;
+      }
+
+       public function hapusbuku($id)
+      {
+          $query = $this->koneksi->query("DELETE FROM buku where idbuku=$id");
+  
+          if ($query) {
+              session_start();
+              $_SESSION['success'] = "Buku Berhasil di Hapus";
+              header('location:../dashboard.php?pages=buku');
+          }
+      }
+
+
+      public function jumlahbuku()
+      {
+          $query = $this->koneksi->query("SELECT * FROM buku");
           return $query->num_rows;
       }
 

@@ -42,6 +42,49 @@ include "Controllers/db.php";
     </div>
     <hr class="horizontal dark mt-0">
     <div class="w-auto " id="sidenav-collapse-main">
+      <div class="bg-dark text-center text-light text-bold">
+
+      <marquee><p><b>Selamat Datang Di Perpustakaan V2</b></p></marquee>
+
+        <?php
+date_default_timezone_set("Asia/Jakarta");
+?>
+
+<script type="text/javascript">
+function date_time(id)
+{
+date = new Date;
+year = date.getFullYear();
+month = date.getMonth();
+months = new Array('Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+d = date.getDate();
+day = date.getDay();
+days = new Array('Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu');
+h = date.getHours();
+if(h<10)
+{
+h = "0"+h;
+}
+m = date.getMinutes();
+if(m<10)
+{
+m = "0"+m;
+}
+s = date.getSeconds();
+if(s<10)
+{
+s = "0"+s;
+}
+result = ''+days[day]+', '+d+' '+months[month]+' '+year+' '+h+':'+m+':'+s;
+document.getElementById(id).innerHTML = result;
+setTimeout('date_time("'+id+'");','1000');
+return true;
+}
+</script>
+
+ <span id="date_time"></span>
+<script type="text/javascript">window.onload = date_time('date_time');</script>
+      </div>
       <ul class="navbar-nav">
         <?php
 
@@ -223,7 +266,7 @@ include "Controllers/db.php";
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-hat-3 text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -238,13 +281,14 @@ include "Controllers/db.php";
                   <div class="numbers">
                     
 
-                    <h1>3</h1>
+                    <h5>Jumlah Buku</h5>
+                    <h5><?= $perpus->jumlahbuku() ?></h5>
 
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-book-bookmark text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -258,13 +302,14 @@ include "Controllers/db.php";
                 <div class="col-8">
                   <div class="numbers">
       
-                    <h1>4</h1>
+                    <h5>Jumlah </h5>
+                    <h5><?= $perpus->jumlahsiswa() ?></h5>
 
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-shop text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -295,8 +340,10 @@ include "Controllers/db.php";
             }
             elseif($pages == 'buku'){
               @$act = $_GET['act'];
-              if($act == 'tambah'){
+              if($act == 'tambahbuku'){
                 include "views/petugas/buku/tambah.php";
+              } else if($act == 'ubahbuku'){
+                include "views/petugas/buku/ubah.php";
               }
               else {
               include "views/petugas/buku/buku.php";
