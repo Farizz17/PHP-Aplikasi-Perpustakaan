@@ -42,10 +42,10 @@ include "Controllers/db.php";
     </div>
     <hr class="horizontal dark mt-0">
     <div class="w-auto " id="sidenav-collapse-main">
-      <div class="bg-dark text-center text-light text-bold">
 
-      <marquee><p><b>Selamat Datang Di Perpustakaan V2</b></p></marquee>
+    <marquee style="color: red; font-size: 50px;"><p><b>Selamat Datang Di Perpustakaan V2</b></p></marquee>
 
+      <div class="bg-dark text-center text-light text-bold p-3">
         <?php
 date_default_timezone_set("Asia/Jakarta");
 ?>
@@ -237,7 +237,7 @@ return true;
                   <div class="numbers">
                     
 
-                    <h5>Jumlah Users</h5>
+                    <h5>Jumlah Pengguna</h5>
                     <h5><?= $perpus->jumlahusers() ?></h5>
 
                   </div>

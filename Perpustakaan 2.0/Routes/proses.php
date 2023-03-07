@@ -79,17 +79,7 @@ if(@$_GET['act'] == 'hapussiswa'){
 // PROSES HAPUS SISWA
 
 
-
-
-
-
-
-
-
-
-
-
-// PROSES TAMBAH SISWA
+// PROSES TAMBAH BUKU
 if(@$_POST['simpanbuku']){
     $judul = $_POST['judul'];
     $deskripsi = $_POST['deskripsi'];
@@ -100,9 +90,9 @@ if(@$_POST['simpanbuku']){
 
     $perpus->prosestambahbuku($judul, $deskripsi, $penulis, $penerbit, $cover);
 }
-// PROSES TAMBAH SISWA
+// PROSES TAMBAH BUKU
 
-// PROSES UBAH SISWA
+// PROSES UBAH BUKU
 if(@$_POST['ubahbuku']){
      $judul = $_POST['judul'];
     $deskripsi = $_POST['deskripsi'];
@@ -115,11 +105,11 @@ if(@$_POST['ubahbuku']){
 
     $perpus->ubahbuku($judul, $deskripsi, $penulis, $penerbit, $cover, $id);
 }
-// PROSES UBAH SISWA
+// PROSES UBAH BUKU
 
-// PROSES HAPUS SISWA
+// PROSES HAPUS BUKU
 if(@$_GET['act'] == 'hapusbuku'){
     $id = $_GET['id'];
     $perpus->hapusbuku($id);
 }
-// PROSES HAPUS SISWA
+// PROSES HAPUS BUKU
