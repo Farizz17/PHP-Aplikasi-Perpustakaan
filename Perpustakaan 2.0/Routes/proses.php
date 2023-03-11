@@ -126,6 +126,13 @@ if (@$_POST['tambahpeminjaman']) {
 }
 // TAMBAH PEMINJAMAN
 
+// HAPUS PEMINJAMAN
+if(@$_GET['act'] == 'hapuspeminjaman'){
+    $nisn = $_GET['nisn'];
+    $perpus->hapuspeminjaman($nisn);
+}
+// HAPUS PEMINJAMAN
+
 // PENCARIAN NISN
 if (@$_POST['carinisn']) {
     $nisn = $_POST['nisn'];

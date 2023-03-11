@@ -331,6 +331,17 @@ class perpustakaan
         }
     }
 
+    public function hapuspeminjaman($nisn)
+      {
+          $query = $this->koneksi->query("DELETE FROM pinjam where nisn='$nisn'");
+  
+          if ($query) {
+              session_start();
+              $_SESSION['success'] = "Peminjaman Berhasil di Hapus";
+              header('location:../dashboard.php?pages=peminjaman');
+          }
+      }
+
     public function buku()
     {
         $query = $this->koneksi->query("SELECT * FROM buku");

@@ -9,6 +9,7 @@
         <th>Judul Buku</th>
         <th>Tanggal Peminjaman</th>
         <th>Tanggal Kembali</th>
+        <th>Opsi</th>
     </tr>
     <?php
     $no = 1;
@@ -21,6 +22,9 @@
             <td><?= $pinjam->judul; ?></td>
             <td><?= $pinjam->tanggalpinjam; ?></td>
             <td><?= $pinjam->tanggalkembali; ?></td>
+            <td>
+            <a class="btn btn-danger" href="Routes/proses.php?act=hapuspeminjaman&nisn=<?= $pinjam->nisn; ?>" onclick="return confirm('yakin user ingin dihapus?')">Hapus</a>
+            </td>
         </tr>
     <?php
         $no++;
