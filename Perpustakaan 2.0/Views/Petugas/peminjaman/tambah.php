@@ -11,7 +11,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan2');
     <div class="form-group">
         <label for="">NIS</label>
         <input type="text" name="nisn" autofocus class="form-control">
-        <input type="submit" name="carinisn" value="Cari" class="btn btn-primary mt-1 mb-1 form-control">
+        <input type="submit" name="carinisn" value="Cari" class="btn btn-primary mt-3 mb-1 form-control">
     </div>
 </form>
 
