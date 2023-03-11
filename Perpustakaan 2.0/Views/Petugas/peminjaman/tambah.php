@@ -11,7 +11,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan2');
     <div class="form-group">
         <label for="">NIS</label>
         <input type="text" name="nisn" autofocus class="form-control">
-        <input type="submit" name="carinisn" value="Cari" class="btn btn-primary mt-1 mb-1">
+        <input type="submit" name="carinisn" value="Cari" class="btn btn-primary mt-1 mb-1 form-control">
     </div>
 </form>
 
@@ -44,7 +44,7 @@ $koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan2');
         <input type="date" name="tanggalkembali" class="form-control">
     </div>
     <div class="form-group">
-        <input type="submit" name="tambahpeminjaman" class="btn btn-primary" value="simpan">
+        <input type="submit" name="tambahpeminjaman" class="btn btn-primary form-control" value="simpan">
         <a href="dashboard.php?pages=peminjaman" class="btn btn-danger">Kembali</a>
     </div>
 </form>
