@@ -259,7 +259,8 @@ return true;
                   <div class="numbers">
                     
 
-                     <h5>Jumlah Siswa</h5>
+                     <h5>Jumlah <br>
+                      Siswa</h5>
                     <h5><?= $perpus->jumlahsiswa() ?></h5>
 
                   </div>
@@ -281,7 +282,8 @@ return true;
                   <div class="numbers">
                     
 
-                    <h5>Jumlah Buku</h5>
+                    <h5>Jumlah <br>
+                      Buku</h5>
                     <h5><?= $perpus->jumlahbuku() ?></h5>
 
                   </div>
