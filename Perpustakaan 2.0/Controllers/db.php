@@ -22,7 +22,7 @@ class perpustakaan
         );
     }
 
-    public function proseslogin($username, $password)
+        public function proseslogin($username, $password)
     {
         $query = $this->koneksi->query
         ("SELECT * FROM users 
@@ -45,8 +45,7 @@ class perpustakaan
             header('location:../login.php');
         }
     }
-
-    public function logout()
+        public function logout()
     {
         session_start();
         session_destroy();
@@ -59,8 +58,9 @@ class perpustakaan
         header('location:../login.php');
     }
 
-    // DATA USERS
-    public function listusers()
+
+
+        public function listusers()
     {
         $query = $this->koneksi->query
         ("SELECT * FROM users");
@@ -69,14 +69,12 @@ class perpustakaan
         }
         return $hasil;
     }
-
         public function tampilubah($id)
         {
             $query = $this->koneksi->query
             ("SELECT * FROM users WHERE user_id = '$id'");
             return $query->fetch_object();
         }
-
         public function ubahusers($id, $username, $password)
         {
             if ($password == '') {
@@ -96,7 +94,6 @@ class perpustakaan
                 
             }
         }
-
         public function hapususers($id)
         {
             $query = $this->koneksi->query
@@ -107,7 +104,6 @@ class perpustakaan
                 header("location:../dashboard.php?pages=users");
             }
         }
-
         public function prosestambahusers($username, $password){
             if ($username == '' || $password == '') {
                 session_start();
@@ -124,17 +120,11 @@ class perpustakaan
                 header("location:../dashboard.php?pages=users");
             }
         }
-
         public function jumlahusers(){
         $query = $this->koneksi->query
         ("SELECT * FROM users");
         return $query->num_rows;
         }
-        // DATA USERS
-
-
-
-
 
 
 
@@ -147,13 +137,11 @@ class perpustakaan
           }
           return $hasil;
       }
-  
-      public function prosestambahsiswa($nisn, $nama, $kelas, $foto)
+        public function prosestambahsiswa($nisn, $nama, $kelas, $foto)
       {
           if ($nisn == '' || $nama == '' || $kelas == '' || $foto == '') {
               session_start();
               $_SESSION['fail'] = "Data belum diisi, isi terlebih dahulu";
-              header('location:../dashboard.php?pages=siswa&act=tambahsiswa');
           }
           else {
               $ukuran = $_FILES['foto']['size'];
@@ -172,15 +160,15 @@ class perpustakaan
           }
   
           $query = $this->koneksi->query("INSERT INTO siswa VALUES(null,'$nisn','$nama','$kelas','$foto')");
-  
+          $query = $this->koneksi->query ("INSERT INTO users VALUES(null,'$nisn',md5('$nisn'),'Siswa','$nisn')");
+
           if ($query) {
               session_start();
               $_SESSION['success'] = "Siswa berhasil di tambah";
               header('location:../dashboard.php?pages=siswa');
           }
       }
-
-      public function ubahsiswa($nisn, $nama, $kelas, $foto, $id)
+        public function ubahsiswa($nisn, $nama, $kelas, $foto, $id)
       {
           if ($nisn == '' || $nama == '' || $kelas == '' || $foto == '') {
               session_start();
@@ -209,15 +197,13 @@ class perpustakaan
               header('location:../dashboard.php?pages=siswa');
           }
       }
-
-      public function tampilubahsiswa($id)
+        public function tampilubahsiswa($id)
       {
           $query = $this->koneksi->query("SELECT * FROM siswa where siswa_id=$id");
           $data = $query->fetch_object();
           return $data;
       }
-  
-      public function hapussiswa($id)
+        public function hapussiswa($id)
       {
           $query = $this->koneksi->query("DELETE FROM siswa where siswa_id=$id");
   
@@ -227,7 +213,7 @@ class perpustakaan
               header('location:../dashboard.php?pages=siswa');
           }
       }
-      public function jumlahsiswa()
+        public function jumlahsiswa()
       {
           $query = $this->koneksi->query("SELECT * FROM siswa");
           return $query->num_rows;
@@ -235,8 +221,7 @@ class perpustakaan
 
 
 
-
-      public function listbuku()
+        public function listbuku()
       {
   
           $query = $this->koneksi->query("SELECT * FROM buku");
@@ -245,8 +230,7 @@ class perpustakaan
           }
           return $hasil;
       }
-
-      public function prosestambahbuku($judul, $deskripsi, $penulis, $penerbit, $cover)
+        public function prosestambahbuku($judul, $deskripsi, $penulis, $penerbit, $cover)
       {
           if ($judul == '' || $deskripsi == '' || $penulis == '' || $penerbit == '') {
             //   session_start();
@@ -278,18 +262,12 @@ class perpustakaan
               header('location:../dashboard.php?pages=buku');
           }
       }
-
-
-      public function ubahbuku($judul, $deskripsi, $penulis, $penerbit, $cover, $id)
+        public function ubahbuku($judul, $deskripsi, $penulis, $penerbit, $cover, $id)
       {
           if ($judul == '' || $deskripsi == '' || $penulis == '' || $penerbit == '' || $cover == '') {
-            //   session_start();
-            //   $_SESSION['fail'] = "User Gagal di Ubah";
-            //   header('location:../dashboard.php?pages=buku');
           } else {
               $ukuran = $_FILES['foto']['size'];
               $error = $_FILES['foto']['error'];
-  
               if ($ukuran > 0 || $error == 0) {
                   $move = move_uploaded_file($_FILES['foto']['tmp_name'], '../assets/img/' . $cover);
                   if ($move) {
@@ -301,24 +279,20 @@ class perpustakaan
                   echo "File Gagal Diupload" . $error;
               }
           }
-
             $query = $this->koneksi->query("UPDATE buku SET judul='$judul',deskripsi='$deskripsi',penulis='$penulis',penerbit='$penerbit',gambar='$cover' WHERE idbuku=$id");
-
           if ($query) {
               session_start();
               $_SESSION['success'] = "Buku Berhasil di Ubah";
               header('location:../dashboard.php?pages=buku');
           }
       }
-
-      public function tampilubahbuku($id)
+        public function tampilubahbuku($id)
       {
           $query = $this->koneksi->query("SELECT * FROM buku where idbuku=$id");
           $data = $query->fetch_object();
           return $data;
       }
-
-       public function hapusbuku($id)
+        public function hapusbuku($id)
       {
           $query = $this->koneksi->query("DELETE FROM buku where idbuku=$id");
   
@@ -328,15 +302,12 @@ class perpustakaan
               header('location:../dashboard.php?pages=buku');
           }
       }
-
-
-      public function jumlahbuku()
+        public function jumlahbuku()
       {
           $query = $this->koneksi->query("SELECT * FROM buku");
           return $query->num_rows;
       }
-
-    }
+}
 
 $perpus = new perpustakaan();
 // print_r($perpus->$list_users());
