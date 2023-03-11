@@ -113,3 +113,23 @@ if(@$_GET['act'] == 'hapusbuku'){
     $perpus->hapusbuku($id);
 }
 // PROSES HAPUS BUKU
+
+
+// TAMBAH PEMINJAMAN
+if (@$_POST['tambahpeminjaman']) {
+    $nomorpeminjaman = $_POST['nisn'] . "-" . date('Y-m-d');
+    $siswa = $_POST['nisn'];
+    $buku = $_POST['buku'];
+    $tanggalpinjam = date('Y-m-d');
+    $tanggalkembali = $_POST['tanggalkembali'];
+    $perpus->prosestambahpeminjaman($nomorpeminjaman, $siswa, $buku, $tanggalpinjam, $tanggalkembali);
+}
+// TAMBAH PEMINJAMAN
+
+// PENCARIAN NISN
+if (@$_POST['carinisn']) {
+    $nisn = $_POST['nisn'];
+    $nama = $_POST['nama'];
+    $perpus->carinisn($nisn);
+}
+// PENCARIAN NISN

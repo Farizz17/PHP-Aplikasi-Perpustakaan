@@ -302,8 +302,8 @@ return true;
                 <div class="col-8">
                   <div class="numbers">
       
-                    <h5>Jumlah </h5>
-                    <h5><?= $perpus->jumlahsiswa() ?></h5>
+                    <h5>Jumlah Peminjaman</h5>
+                    <h5><?= $perpus->jumlahpeminjaman() ?></h5>
 
                   </div>
                 </div>
@@ -338,6 +338,7 @@ return true;
                 include "views/petugas/users/users.php";
               }
             }
+
             elseif($pages == 'buku'){
               @$act = $_GET['act'];
               if($act == 'tambahbuku'){
@@ -349,6 +350,7 @@ return true;
               include "views/petugas/buku/buku.php";
               }
             }
+
             elseif($pages == 'siswa'){
               @$act = $_GET['act'];
               if($act == 'tambahsiswa'){
@@ -361,6 +363,7 @@ return true;
               include "views/petugas/siswa/siswa.php";
               }
             }
+
             elseif($pages == 'peminjaman'){
               @$act = $_GET['act'];
               if($act == 'tambah'){
@@ -370,6 +373,7 @@ return true;
               include "views/petugas/peminjaman/peminjaman.php";
               }
             }
+
             elseif($pages == 'datapeminjaman'){
               @$act = $_GET['act'];
               if($act == 'tambah'){

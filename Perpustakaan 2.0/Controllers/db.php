@@ -307,6 +307,49 @@ class perpustakaan
           $query = $this->koneksi->query("SELECT * FROM buku");
           return $query->num_rows;
       }
+
+      public function listpeminjaman()
+    {
+        $query = $this->koneksi->query("SELECT * FROM pinjam
+        INNER JOIN buku ON buku.idbuku = pinjam.idbuku
+        INNER JOIN siswa ON siswa.nisn = pinjam.nisn");
+        while ($pinjam = $query->fetch_object()) {
+            $hasil[] = $pinjam;
+        }
+        return $hasil;
+    }
+
+     public function prosestambahpeminjaman($nomorpeminjaman, $siswa, $buku, $tanggalpinjam, $tanggalkembali)
+    {
+        $query = $this->koneksi->query("INSERT INTO pinjam VALUES
+        ('$nomorpeminjaman','$buku','$siswa','$tanggalpinjam','$tanggalkembali')");
+
+        if ($query) {
+            session_start();
+            $_SESSION['success'] = 'Data peminjaman berhasil disimpan';
+            header("location:../dashboard.php?pages=peminjaman");
+        }
+    }
+
+    public function buku()
+    {
+        $query = $this->koneksi->query("SELECT * FROM buku");
+        while ($data = $query->fetch_object()) {
+            $hasilbuku[] = $data;
+        }
+        return $hasilbuku;
+    }
+
+    public function jumlahpeminjaman()
+    {
+        $query = $this->koneksi->query("SELECT * FROM pinjam");
+        return $query->num_rows;
+    }
+
+    public function carinisn($nisn)
+    {
+        header("location:../dashboard.php?pages=peminjaman&act=tambah&nisn=$nisn");
+    }
 }
 
 $perpus = new perpustakaan();

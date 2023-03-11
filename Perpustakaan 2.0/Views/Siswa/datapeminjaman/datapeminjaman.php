@@ -1,29 +1,31 @@
-<html>
-    <body>
-        <center>
+<?php
+$koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan2');
+@session_start();
+?>
 
-        <h1>DATA PEMINJAMAN BUKU</h1>
-
-        <table border="5">
-            <tr>
-                <th>No</th>
-                <th>Judul Buku</th>
-                <th>Tanggal Peminjaman</th>
-                <th>Tanggal Pengembalian</th>
-
-            <tr>
-                <td><?= $no++ ?></td>
-                <td><?= $datapinjam->judul ?></td>
-                <td><?= $datapinjam->tanggalpinjam ?></td>
-                <td><?= $datapinjam->tanggalkembali ?></td>
-            </tr>
-
-            </table>
-                <br>
-                    <div class="pilihan">
-                    <a style="text-decoration: none; background-color: blue; color: white; padding: 10px; border-radius: 20px;" href="Perpustakaan.php">Kembali Ke Halaman Depan</a>
-                    </div>
-                </tr>
-        </center>
-    </body>
-</html>
+<table class="table border shadow">
+    <tr class="bg-primary text-white">
+        <th>No</th>
+        <th>ID Buku</th>
+        <th>Judul Buku</th>
+        <th>Tanggal Peminjaman</th>
+        <th>Tanggal Kembali</th>
+    </tr>
+    <?php
+    $nisn = $_SESSION['nis'];
+    $no = 1;
+    $querydp = mysqli_query($koneksi, "SELECT * FROM pinjam
+    INNER JOIN buku ON buku.idbuku = pinjam.idbuku WHERE nisn=$nisn");
+    while ($dp = mysqli_fetch_array($querydp)) {
+    ?>
+        <tr>
+            <td><?= $no++; ?></td>
+            <td><?= $dp['idbuku']; ?></td>
+            <td><?= $dp['judul']; ?></td>
+            <td><?= $dp['tanggalpinjam']; ?></td>
+            <td><?= $dp['tanggalkembali']; ?></td>
+        </tr>
+    <?php
+    }
+    ?>
+</table>
