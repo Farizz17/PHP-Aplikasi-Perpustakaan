@@ -12,6 +12,7 @@
 
     <tr class="bg-primary text-light">
         <th>No</th>
+        <th>ID Pengguna</th>
         <th>Nama</th>
         <th>Level</th>
         <th>Opsi</th>
@@ -25,6 +26,7 @@
     ?>
     <tr>
         <td><?= $no; ?></td>
+        <td><?= $u->user_id; ?></td>
         <td><?= $u->username; ?></td>
         <td><?= $u->level; ?></td>
         <td>

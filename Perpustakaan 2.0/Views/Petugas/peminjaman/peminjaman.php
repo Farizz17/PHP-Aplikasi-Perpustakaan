@@ -13,7 +13,7 @@
     </tr>
     <?php
     $no = 1;
-    foreach ($perpus->listpeminjaman() as $pinjam){?>
+    foreach (@$perpus->listpeminjaman() as $pinjam){?>
         <tr>
             <td><?= $no; ?></td>
             <td><?= $pinjam->nomorpeminjaman; ?></td>
