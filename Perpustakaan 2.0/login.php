@@ -59,11 +59,16 @@ session_start();
               </div>
             </div>
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
-          background-size: cover;">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Chambery_interieur_mediatheque_600px.jpg');
+              background-size: contain;">
                 <span class="mask bg-gradient-primary opacity-6"></span>
-                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Lorem"</h4>
-                <p class="text-white position-relative">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ea, laborum voluptates minus ducimus illum quisquam? Doloribus hic commodi maxime eaque at blanditiis quidem, voluptate quisquam eos asperiores consequatur.</p>
+                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Perpustakaan"</h4>
+                
+                <p class="text-white position-relative">Dalam arti tradisional, perpustakaan ataupun rumah buku, adalah sebuah koleksi buku dan majalah. Walaupun dapat diartikan sebagai koleksi pribadi perseorangan, namun perpustakaan lebih umum dikenal sebagai sebuah koleksi besar yang dibiayai dan dioperasikan oleh sebuah kota atau institusi, serta dimanfaatkan oleh masyarakat yang rata-rata tidak mampu membeli sekian banyak buku dengan biaya sendiri.
+                <br><br>
+                Perpustakaan dapat juga diartikan sebagai kumpulan informasi yang bersifat ilmu pengetahuan, hiburan, rekreasi, dan ibadah yang merupakan kebutuhan hakiki manusia.
+                <br><br>
+                Oleh karena itu perpustakaan modern telah didefinisikan kembali sebagai tempat untuk mengakses informasi dalam format apapun, apakah informasi itu disimpan dalam gedung perpustakaan tersebut ataupun tidak. Dalam perpustakaan modern ini selain kumpulan buku tercetak, sebagian buku dan koleksinya ada dalam perpustakaan digital (dalam bentuk data yang bisa diakses lewat jaringan komputer).</p>
               </div>
             </div>
           </div>
